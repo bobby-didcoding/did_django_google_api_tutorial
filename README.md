@@ -2,8 +2,8 @@
 Django project that uses Googles APIs to auto populate fields, display maps and routes for multiple waypoints
 
 1) cd to development directory
-2) mkvirtualenv did_django_google_maps_api
-3) mkdir did_django_google_maps_api
+2) mkvirtualenv did_django_google_api_tutorial
+3) mkdir did_django_google_api_tutorial
 4) clone repository to new directory
 5) pip install -r requirements.txt
 6) Create and update settings.ini with your email API information
