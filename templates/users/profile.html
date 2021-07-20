@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Django Google API Course - User Profile</h3>
+
+<div class="container">
+  {% if request.user.userprofile.has_profile %}
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Address</td>
+        <td>
+          <address>
+            {{request.user.userprofile.address}}<br>
+            {{request.user.userprofile.town}}<br>
+            {{request.user.userprofile.county}}<br>
+            {{request.user.userprofile.post_code}}<br>
+          </address>
+        </td>      
+      </tr>
+    </tbody>
+  </table>
+  </br>
+  <label for="id-google-address">Change Address</label>
+  {% else %}
+  <label for="id-google-address">Add Address</label>
+  {% endif %}
+
+  <input type="text" placeholder="*Begin typing address" id="id-google-address" name="google_address">
+
+  <form id="profileform" method="POST" action="/profile">
+    {% csrf_token %}
+
+   <label for="address" class="hidden-el" hidden>Address</label>
+   {{form.address}}
+
+   <label for="town" class="hidden-el" hidden>Town/City</label>
+   {{form.town}}
+
+   <label for="county" class="hidden-el" hidden>County</label>
+   {{form.county}}
+
+   <label for="post_code" class="hidden-el" hidden>Postal Code</label>
+   {{form.post_code}}
+
+   <label for="country" class="hidden-el" hidden>Country</label>
+   {{form.country}}
+
+   <label for="post_code" class="hidden-el" hidden>Longitude</label>
+   {{form.longitude}}
+
+   <label for="country"  class="hidden-el" hidden>Latitude</label>
+   {{form.latitude}}
+
+
+   <button disabled type="submit" id="profile-btn">Update</button>
+ </form>
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+<script type="text/javascript">
+
+  var google_api_key = "{{google_api_key|safe}}";
+  var base_country = "{{base_country|safe}}";
+
+</script>
+
+<script src="{% static 'google_places.js' %}"></script>
+
+
+{% endblock %}

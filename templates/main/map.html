@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3 id="map">Django Google API Course - Map</h3>
+
+<div class="container">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Start</td>
+        <td>{{directions.origin}}</td>      
+      </tr>
+      <tr>
+        <td>Destination</td>
+        <td>{{directions.destination}}</td>      
+      </tr>
+      <tr>
+        <td>Duration</td>
+        <td>{{directions.duration}}</td>      
+      </tr>
+      <tr>
+        <td>Distance</td>
+        <td>{{directions.distance}}</td>      
+      </tr>
+      <tr>
+        <td>Directions</td>
+        <td id="dir-toggle">click <a href="javascript:void(0)" onclick="DirectionsToggle()">here</a></td>      
+      </tr>
+
+    </tbody>
+  </table>
+
+  <table id="dir-table" hidden>
+    <thead>
+      <tr>
+        <th>Directions</th>
+        <th>Distance</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for leg in directions.route %}
+          <tr>
+          <td>Leg {{ forloop.counter }}</td>
+          <td></td>
+          <td></td>  
+        </tr>
+        {% for dist, dur, text in leg.steps %}
+        <tr>
+          <td>{{text|safe}}</td>
+          <td>{{dist}}</td>
+          <td>{{dur}}</td>   
+        </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+<div class="map-container">
+
+   <div id="map-route"></div>
+
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+<script type="text/javascript">
+
+    var google_api_key = "{{google_api_key|safe}}";
+    var lat_a = {{lat_a|safe}};
+    var long_a = {{long_a|safe}};
+    var lat_b = {{lat_b|safe}};
+    var long_b = {{long_b|safe}};
+    var lat_c = {{lat_c|safe}};
+    var long_c = {{long_c|safe}};
+    var lat_d = {{lat_d|safe}};
+    var long_d = {{long_d|safe}};
+    var origin = "{{origin|safe}}";
+    var destination = "{{destination|safe}}";
+    var directions = {{directions|safe}}
+
+  </script>
+
+  <script src="{% static 'google_maps.js' %}"></script>
+
+
+{% endblock %}

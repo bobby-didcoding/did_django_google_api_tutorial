@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Django Google API Course - Routing</h3>
+
+<div class="container">
+
+   <label for="id-google-address-a">Start Address</label>
+   <input type="text" placeholder="*Begin typing address" id="id-google-address-a" name="google_address_a">
+   
+   <label for="id-google-address-c">Way point 1</label>
+   <input type="text" placeholder="*Begin typing address" id="id-google-address-c" name="google_address_c">
+
+   <label for="id-google-address-d">Way point 2</label>
+   <input type="text" placeholder="*Begin typing address" id="id-google-address-d" name="google_address_d">
+
+   <label for="id-google-address-b">Destination Address</label>
+   <input type="text" placeholder="*Begin typing address" id="id-google-address-b" name="google_address_b">
+
+   
+
+
+   <input type="hidden" class="geo" id="id-lat-a" value="">
+   <input type="hidden" class="geo" id="id-long-a" value="">
+   <input type="hidden" class="geo" id="id-lat-b" value="">
+   <input type="hidden" class="geo" id="id-long-b" value="">
+   <input type="hidden" class="geo" id="id-lat-c" value="">
+   <input type="hidden" class="geo" id="id-long-c" value="">
+   <input type="hidden" class="geo" id="id-lat-d" value="">
+   <input type="hidden" class="geo" id="id-long-d" value="">
+
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+    <script type="text/javascript">
+
+      var google_api_key = "{{google_api_key|safe}}";
+      var base_country = "{{base_country|safe}}";
+
+    </script>
+
+  <script src="{% static 'google_places_waypoints.js' %}"></script>
+
+
+{% endblock %}

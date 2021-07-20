@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- visit https://fonts.google.com/specimen/Courier+Prime?preview.text_type=custom to get script-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'main.css' %}"></link>
+
+  <!-- https://cdnjs.com/libraries/toastr.js/latest -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <!-- This allows us to extend the head scripts in HTML docs that have special requirements-->
+
+  
+  {% block extend_head %}
+
+  {% endblock %}
+
+</head>
+<body>
+
+  <!-- This allows us to extend the nav bar in HTML docs that have special requirements-->
+  {% include 'partials/nav.html' %}
+
+  <div class="div-container">
+    
+    {% include 'partials/logo.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+  </div>
+
+  <!--visit https://code.jquery.com/ for jquery script-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <!-- https://cdnjs.com/libraries/toastr.js/latest -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- This allows us to extend the foot scripts in HTML docs that have special requirements-->
+  {% block extend_footer %}
+
+  {% endblock %}
+
+  <script src="{% static 'main.js' %}"></script>
+  
+
+</body>
+</html>
